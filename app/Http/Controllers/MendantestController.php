@@ -2,12 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Author;
 use Illuminate\Http\Request;
+use App\Http\Requests\AuthorRequest;
 
 class MendantestController extends Controller
+
 {
-    public function index($room)
+    public function index()
     {
-        return "部屋番号は" . $room . "です";
+        $authors = Author::all();
+        return view('index', ['authors' => $authors]);
     }
+
+
+    public function post(AuthorRequest $request)
+    {
+        return view('thanks');
+    }
+
 }
